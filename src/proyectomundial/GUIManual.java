@@ -33,25 +33,25 @@ public class GUIManual extends JFrame {
 
     // Elementos de bara Lateral
     private JPanel jPanelLeft;
-    
+
     private JPanel jPanelIconFIFA;
     private JLabel iconFIFA;
 
     // Elementos de opciones de Menú
     private JPanel jPanelMenu;
-    
+
     private JPanel jPanelMenuHome;
     private JLabel btnHome;
-    
+
     private JPanel jPanelMenuSelecciones;
     private JLabel btnSelecciones;
-    
+
     private JPanel jPanelMenuResultados;
     private JLabel btnResultados;
-    
+
     private JPanel jPanelMenuDashboardSel;
     private JLabel btnDashboardSel;
-    
+
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
     private JPanel Usuario;
@@ -61,12 +61,12 @@ public class GUIManual extends JFrame {
     private JPanel jPanelRight;
     private JPanel jPanelLabelTop;
     private JLabel jLabelTop;
-    
+
     private JPanel jPanelMain;
-    
+
     private boolean haySesion;
     private String[][] usuarios;
-    
+
     public GUIManual() {
 
         // Cuando inicia el programa no hay sesion avctiva
@@ -76,16 +76,16 @@ public class GUIManual extends JFrame {
         usuarios = new String[5][2];
         usuarios[0][0] = "usuario1";
         usuarios[0][1] = "Password1";
-        
+
         usuarios[1][0] = "usuario2";
         usuarios[1][1] = "Password2";
-        
+
         usuarios[2][0] = "usuario3";
         usuarios[2][1] = "Password3";
-        
+
         usuarios[3][0] = "usuario4";
         usuarios[3][1] = "Password4";
-        
+
         usuarios[4][0] = "usuario5";
         usuarios[4][1] = "Password5";
 
@@ -99,33 +99,33 @@ public class GUIManual extends JFrame {
 
         // Se llama la función home para que al momento de iniciar la aplicacoón, por defecto se muestre el home
         accionHome();
-        
+
     }
-    
+
     private void initComponents() {
 
         // Inicializamos componentes del Menu Lateral
         jPanelLeft = new JPanel();
-        
+
         jPanelIconFIFA = new JPanel();
         iconFIFA = new JLabel();
         jPanelMenu = new JPanel();
-        
+
         jPanelMenuHome = new JPanel();
         btnHome = new JLabel();
-        
+
         jPanelMenuSelecciones = new JPanel();
         btnSelecciones = new JLabel();
-        
+
         jPanelMenuResultados = new JPanel();
         btnResultados = new JLabel();
-        
+
         jPanelMenuDashboardSel = new JPanel();
         btnDashboardSel = new JLabel();
-        
+
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
-        
+
         Usuario = new JPanel();
         Usuarios = new JLabel();
 
@@ -146,7 +146,7 @@ public class GUIManual extends JFrame {
 
         // Pinta la opción de Menú del dahboard de resultados
         pintarMenuDashboardRes();
-        
+
         menuUsuariario();
 
         // Pinta y ajuste diseño del contenedor del panel izquierdo
@@ -162,12 +162,12 @@ public class GUIManual extends JFrame {
 
         // Pinta y ajusta diseño del contenedor de contenidos
         pintarPanelDerecho();
-        
+
         setTitle("Mundial");
         pack();
         setVisible(true);
     }
-    
+
     private void pintarLogo() {
         jPanelIconFIFA.add(iconFIFA);
         jPanelIconFIFA.setOpaque(false);
@@ -175,7 +175,7 @@ public class GUIManual extends JFrame {
         jPanelIconFIFA.setMaximumSize(jPanelIconFIFA.getPreferredSize());
         iconFIFA.setIcon(new ImageIcon(getClass().getResource("/resources/Easports_fifa_logo.svg.png")));
         jPanelLeft.add(jPanelIconFIFA, BorderLayout.LINE_START);
-        
+
     }
 
     /**
@@ -188,7 +188,7 @@ public class GUIManual extends JFrame {
         btnHome.setIcon(new ImageIcon(getClass().getResource("/resources/icons/home.png"))); // NOI18N
         btnHome.setText("Home");
         btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioHome = new JLabel();
         jPanelMenuHome.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuHome.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -196,7 +196,7 @@ public class GUIManual extends JFrame {
         jPanelMenuHome.add(vacioHome, BorderLayout.WEST);
         jPanelMenuHome.add(btnHome, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuHome);
-        
+
         btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Home");
@@ -218,38 +218,33 @@ public class GUIManual extends JFrame {
         jPanelMain.removeAll();
         JPanel homePanel = new JPanel();
         JLabel imageHome = new JLabel();
-        
+
         imageHome.setIcon(new ImageIcon(getClass().getResource("/resources/home.jpg"))); // NOI18N
         //imageHome.setPreferredSize(new java.awt.Dimension(810, 465));
         homePanel.add(imageHome);
-        
+
         jPanelMain.add(homePanel, BorderLayout.CENTER);
         jPanelMain.repaint();
         jPanelMain.revalidate();
     }
-    
+
     private void Contraseñas() {
-        
-        //haySesion = true;
-        String entradaUsuario = JOptionPane.showInputDialog("Introduzca Usuario:");
-        String entradaContraseña = JOptionPane.showInputDialog("Introduzca Contraseña:");
-        
-       
-        
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 2; j++) {
-                if (entradaUsuario.equals(usuarios[i][j]) && entradaContraseña.equals(usuarios[i][j+1])) {
-                    //String mensaje = JOptionPane.showInputDialog("vamos bien:");
-                     haySesion = true;
+
+        if (!haySesion) {
+            String entradaUsuario = JOptionPane.showInputDialog("Introduzca Usuario:");
+            String entradaContraseña = JOptionPane.showInputDialog("Introduzca Contraseña:");
+
+            for (int i = 0; i < 5; i++) {
+
+                if (entradaUsuario.equals(usuarios[i][0]) && entradaContraseña.equals(usuarios[i][1])) {
+                    JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso");
+
+                    haySesion = true;
                 }
-                
-                
-                
-                
-                
+
             }
-            
         }
+
     }
 
     /**
@@ -262,7 +257,7 @@ public class GUIManual extends JFrame {
         btnSelecciones.setIcon(new ImageIcon(getClass().getResource("/resources/icons/selecciones.png"))); // NOI18N
         btnSelecciones.setText("Selecciones");
         btnSelecciones.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioSelecciones = new JLabel();
         jPanelMenuSelecciones.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuSelecciones.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -270,7 +265,7 @@ public class GUIManual extends JFrame {
         jPanelMenuSelecciones.add(vacioSelecciones, BorderLayout.WEST);
         jPanelMenuSelecciones.add(btnSelecciones, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuSelecciones);
-        
+
         btnSelecciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Selecciones");
@@ -287,25 +282,25 @@ public class GUIManual extends JFrame {
      * información de las selelecciones
      */
     private void accionSelecciones() {
-        Contraseñas();
+
         if (!haySesion) {
             JOptionPane.showMessageDialog(null, "No hay sesión iniciada");
             return;
         }
-        
+
         jLabelTop.setText("Selecciones");
 
         // Si no hay selecciones cargadas, muestra el botón de carga de selecciones
         if (selecciones == null) {
             jPanelMain.removeAll();
             JPanel seleccionesPanel = new JPanel();
-            
+
             if (selecciones == null) {
-                
+
                 JLabel notSelecciones = new JLabel();
                 notSelecciones.setText("No hay selecciones cargadas, por favor cargue selecciones \n\n");
                 seleccionesPanel.add(notSelecciones);
-                
+
                 JButton cargarFile = new JButton();
                 cargarFile.setText("Seleccione el archivo");
                 seleccionesPanel.add(cargarFile);
@@ -315,7 +310,7 @@ public class GUIManual extends JFrame {
                     }
                 });
             }
-            
+
             jPanelMain.add(seleccionesPanel);
             jPanelMain.repaint();
             jPanelMain.revalidate();
@@ -335,7 +330,7 @@ public class GUIManual extends JFrame {
         btnResultados.setIcon(new ImageIcon(getClass().getResource("/resources/icons/resultados.png"))); // NOI18N
         btnResultados.setText("Resultados");
         btnResultados.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioResultados = new JLabel();
         jPanelMenuResultados.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuResultados.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -343,7 +338,7 @@ public class GUIManual extends JFrame {
         jPanelMenuResultados.add(vacioResultados, BorderLayout.WEST);
         jPanelMenuResultados.add(btnResultados, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuResultados);
-        
+
         btnResultados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accionResultados();
@@ -359,25 +354,25 @@ public class GUIManual extends JFrame {
      * los resultados
      */
     private void accionResultados() {
-        Contraseñas();
+
         if (!haySesion) {
             JOptionPane.showMessageDialog(null, "No hay sesión iniciada");
             return;
         }
-        
+
         jLabelTop.setText("Resultados");
 
         // Si no hay resultados cargados, muestra el botón de carga de resultados
         if (resultados == null) {
             jPanelMain.removeAll();
             JPanel resultadosPanel = new JPanel();
-            
+
             if (resultados == null) {
-                
+
                 JLabel notResultados = new JLabel();
                 notResultados.setText("No hay resultados, por favor cargue resultados \n\n");
                 resultadosPanel.add(notResultados);
-                
+
                 JButton cargarFile = new JButton();
                 cargarFile.setText("Seleccione el archivo");
                 resultadosPanel.add(cargarFile);
@@ -387,7 +382,7 @@ public class GUIManual extends JFrame {
                     }
                 });
             }
-            
+
             jPanelMain.add(resultadosPanel);
             jPanelMain.repaint();
             jPanelMain.revalidate();
@@ -408,7 +403,7 @@ public class GUIManual extends JFrame {
         btnDashboardSel.setIcon(new ImageIcon(getClass().getResource("/resources/icons/dashboard_selecciones.png")));
         btnDashboardSel.setText("Dash Selecciones");
         btnDashboardSel.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioDashboardSelecciones = new JLabel();
         jPanelMenuDashboardSel.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuDashboardSel.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -416,7 +411,7 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardSel.add(vacioDashboardSelecciones, BorderLayout.WEST);
         jPanelMenuDashboardSel.add(btnDashboardSel, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuDashboardSel);
-        
+
         btnDashboardSel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Dashboard Selecciones");
@@ -432,12 +427,12 @@ public class GUIManual extends JFrame {
      * información de los paneles
      */
     private void accionDashboardSel() {
-         Contraseñas();
+
         if (!haySesion) {
             JOptionPane.showMessageDialog(null, "No hay sesión iniciada");
             return;
         }
-        
+
         JTextArea a = new JTextArea();
         a.setText("En esta sección, teniendo en cuenta los datos que fueron cargados en la matriz de selecciones \n"
                 + "se deben mostrar los siguientes datos:\n\n"
@@ -446,10 +441,10 @@ public class GUIManual extends JFrame {
                 + "3. Cantidad de nacionalidades diferentes de los directores técnicos \n"
                 + "4. Ranking de nacionalidades de directores técnicos \n\n"
                 + "Utilice los diferentes componentes gráficos para construir un dashboard lo más estético posible");
-        
+
         jPanelMain.removeAll();
         jPanelMain.add(a);
-        
+
         jPanelMain.repaint();
         jPanelMain.revalidate();
     }
@@ -465,7 +460,7 @@ public class GUIManual extends JFrame {
         btnDashboardRes.setIcon(new ImageIcon(getClass().getResource("/resources/icons/dashboard_resultados.png")));
         btnDashboardRes.setText("Dash Resultados");
         btnDashboardRes.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioDashboardResultados = new JLabel();
         jPanelMenuDashboardRes.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuDashboardRes.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -473,7 +468,7 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes.add(vacioDashboardResultados, BorderLayout.WEST);
         jPanelMenuDashboardRes.add(btnDashboardRes, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuDashboardRes);
-        
+
         btnDashboardRes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Dashboard Resultados");
@@ -481,15 +476,13 @@ public class GUIManual extends JFrame {
             }
         });
     }
-    
+
     private void menuUsuariario() {
-        //private JPanel Usuario;
-        //private JLabel Usuarios;
 
         btnDashboardRes.setIcon(new ImageIcon(getClass().getResource("/resources/icons/dashboard_resultados.png")));
-        btnDashboardRes.setText("Sesion");
+        btnDashboardRes.setText("Inicio de Sesion");
         btnDashboardRes.setForeground(new java.awt.Color(255, 255, 255));
-        
+
         JLabel vacioDashboardResultados = new JLabel();
         jPanelMenuDashboardRes.setBackground(new java.awt.Color(17, 41, 63));
         jPanelMenuDashboardRes.setPreferredSize((new java.awt.Dimension(220, 35)));
@@ -497,9 +490,10 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes.add(vacioDashboardResultados, BorderLayout.WEST);
         jPanelMenuDashboardRes.add(btnDashboardRes, BorderLayout.CENTER);
         jPanelMenu.add(jPanelMenuDashboardRes);
-        
+
         btnDashboardRes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+
                 Contraseñas();
             }
         });
@@ -512,12 +506,12 @@ public class GUIManual extends JFrame {
      * información de los paneles
      */
     private void accionDashboardRes() {
-         Contraseñas();
+
         if (!haySesion) {
             JOptionPane.showMessageDialog(null, "No hay sesión iniciada");
             return;
         }
-        
+
         JTextArea a = new JTextArea();
         a.setText("En esta sección, teniendo en cuenta los datos que fueron cargados en la matriz de resultados \n"
                 + "se deben mostrar los siguientes datos:\n\n"
@@ -530,10 +524,10 @@ public class GUIManual extends JFrame {
                 + "7. Continente o continentes con más goles y menos goles \n"
                 + "8. Clasificados por cada grupo (Clasifican los dos primeros equipos de cada grupo) \n\n"
                 + "Utilice los diferentes componentes gráficos para construir un dashboard lo más estético posible");
-        
+
         jPanelMain.removeAll();
         jPanelMain.add(a);
-        
+
         jPanelMain.repaint();
         jPanelMain.revalidate();
     }
@@ -568,10 +562,10 @@ public class GUIManual extends JFrame {
      * matriz de selecciones
      */
     public void cargarFileSelecciones() {
-        
+
         JFileChooser cargarFile = new JFileChooser();
         cargarFile.showOpenDialog(cargarFile);
-        
+
         Scanner entrada = null;
         try {
 
@@ -587,22 +581,22 @@ public class GUIManual extends JFrame {
 
             // Permite que el sistema se salte la léctura de los encabzados del archivo CSV
             entrada.nextLine();
-            
+
             int i = 0;
             // Se leen cada unas de las líneas del archivo
             while (entrada.hasNext()) {
                 System.out.println(i);
                 String line = entrada.nextLine();
                 String[] columns = line.split(",");
-                
+
                 for (int j = 0; j < columns.length; j++) {
                     selecciones[i][j] = columns[j];
                 }
                 i++;
             }
-            
+
             pintarTablaSelecciones();
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -620,42 +614,42 @@ public class GUIManual extends JFrame {
      * que fue leida desde el archivo csv
      */
     public void pintarTablaSelecciones() {
-        
+
         String[] columnNames = {"ID", "Selección", "Continente", "DT", "Nacionalidad DT"};
         JTable table = new JTable(selecciones, columnNames);
         table.setRowHeight(30);
-        
+
         JPanel form = new JPanel();
         form.setLayout(new GridLayout(4, 1, 0, 0));
-        
+
         JLabel label = new JLabel();
         label.setText("Busqueda de Equipos");
         form.add(label);
-        
+
         JTextField field = new JTextField();
         form.add(field);
-        
+
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new GridLayout(1, 2, 30, 0));
-        
+
         JButton buscar = new JButton();
         buscar.setText("Buscar");
         panelBotones.add(buscar);
-        
+
         JButton limpiar = new JButton();
         limpiar.setText("Ver Todos");
         panelBotones.add(limpiar);
         form.add(panelBotones);
-        
+
         JPanel seleccionesPanel = new JPanel();
         seleccionesPanel.setLayout(new BoxLayout(seleccionesPanel, BoxLayout.Y_AXIS));
         seleccionesPanel.setPreferredSize((new java.awt.Dimension(620, 410)));
         seleccionesPanel.setMaximumSize(jPanelRight.getPreferredSize());
-        
+
         JScrollPane scrollPane = new JScrollPane(table);
         seleccionesPanel.add(form);
         seleccionesPanel.add(scrollPane);
-        
+
         jPanelMain.removeAll();
         jPanelMain.add(seleccionesPanel, BorderLayout.PAGE_START);
         jPanelMain.repaint();
@@ -670,10 +664,10 @@ public class GUIManual extends JFrame {
      * matriz en un componente gráfico de tabla
      */
     public void cargarFileResultados() {
-        
+
         JFileChooser cargarFile = new JFileChooser();
         cargarFile.showOpenDialog(cargarFile);
-        
+
         Scanner entrada = null;
         try {
             // Se obtiene la ruta del archivo seleccionado
@@ -686,22 +680,22 @@ public class GUIManual extends JFrame {
             // Se define las dimensiones de la matriz de selecciones
             resultados = new String[48][7];
             entrada.nextLine();
-            
+
             int i = 0;
             // Se iteran cada una de las líneas del archivo
             while (entrada.hasNext()) {
                 System.out.println(i);
                 String line = entrada.nextLine();
                 String[] columns = line.split(",");
-                
+
                 for (int j = 0; j < columns.length; j++) {
                     resultados[i][j] = columns[j];
                 }
                 i++;
             }
-            
+
             pintarTablaResultados();
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -719,42 +713,42 @@ public class GUIManual extends JFrame {
      * corresponden son la información que fue leida desde el archivo csv
      */
     public void pintarTablaResultados() {
-        
+
         String[] columnNames = {"Grupo", "Local", "Visitante", "Continente L", "Continente V", "Goles L", "Goles V"};
         JTable table = new JTable(resultados, columnNames);
         table.setRowHeight(30);
-        
+
         JPanel form = new JPanel();
         form.setLayout(new GridLayout(4, 1, 0, 0));
-        
+
         JLabel label = new JLabel();
         label.setText("Busqueda de Resultados");
         form.add(label);
-        
+
         JTextField field = new JTextField();
         form.add(field);
-        
+
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new GridLayout(1, 2, 30, 0));
-        
+
         JButton buscar = new JButton();
         buscar.setText("Buscar");
         panelBotones.add(buscar);
-        
+
         JButton limpiar = new JButton();
         limpiar.setText("Ver Todos");
         panelBotones.add(limpiar);
         form.add(panelBotones);
-        
+
         JPanel seleccionesPanel = new JPanel();
         seleccionesPanel.setLayout(new BoxLayout(seleccionesPanel, BoxLayout.Y_AXIS));
         seleccionesPanel.setPreferredSize((new java.awt.Dimension(620, 410)));
         seleccionesPanel.setMaximumSize(jPanelRight.getPreferredSize());
-        
+
         JScrollPane scrollPane = new JScrollPane(table);
         seleccionesPanel.add(form);
         seleccionesPanel.add(scrollPane);
-        
+
         jPanelMain.removeAll();
         jPanelMain.add(seleccionesPanel, BorderLayout.PAGE_START);
         jPanelMain.repaint();
@@ -772,7 +766,7 @@ public class GUIManual extends JFrame {
         // Define las dimensiones del panel
         jPanelMain.setPreferredSize((new java.awt.Dimension(620, 420)));
         jPanelMain.setMaximumSize(jPanelLabelTop.getPreferredSize());
-        
+
         getContentPane().add(jPanelRight, java.awt.BorderLayout.CENTER);
         jPanelRight.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         jPanelRight.add(jPanelLabelTop, BorderLayout.LINE_START);
@@ -791,7 +785,7 @@ public class GUIManual extends JFrame {
         jLabelTop.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         jLabelTop.setForeground(new java.awt.Color(241, 241, 241));
         jLabelTop.setText("Home");
-        
+
         JLabel vacioTopLabel = new JLabel();
         jPanelLabelTop.setLayout(new BorderLayout(15, 0));
         jPanelLabelTop.add(vacioTopLabel, BorderLayout.WEST);
@@ -800,9 +794,9 @@ public class GUIManual extends JFrame {
         jPanelLabelTop.setPreferredSize((new java.awt.Dimension(620, 120)));
         jPanelLabelTop.setMaximumSize(jPanelLabelTop.getPreferredSize());
     }
-    
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUIManual().setVisible(true);
